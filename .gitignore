@@ -1,0 +1,14 @@
+# Ignorar entornos virtuales en cualquier proyecto
+**/venv/
+**/.venv/
+
+# Ignorar archivos de entorno
+**/*.env
+
+# Ignorar archivos Python compilados
+__pycache__/
+*.pyc
+
+# Ignorar carpetas de IDE
+.vscode/
+.idea/
