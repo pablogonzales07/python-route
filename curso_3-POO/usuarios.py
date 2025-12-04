@@ -1,0 +1,63 @@
+from abc import ABC, abstractmethod
+from typing import Protocol
+
+from exceptions import TituloInvalidoError
+
+
+class SolicitanteProtocol(Protocol):
+    def solicitar_libro(self, titulo: str) -> str:
+        """Metodo que debe implementar cualquier solicitante"""
+        ...
+
+
+class UsuarioBase(ABC):
+    @abstractmethod
+    def solicitar_libro(self):
+        pass
+
+class Usuario(UsuarioBase):
+    def __init__(self, nombre, cedula):
+        self.nombre = nombre
+        self.cedula = cedula
+        self.libros_prestados = []
+
+    def solicitar_libro(self, titulo):
+        return f"Las solicitud del libro {titulo} realizada"
+    
+    @property
+    def nombre_completo(self):
+        return f"{self.nombre} - CEDULA: {self.cedula}"
+        
+
+
+class Estudiante(Usuario):
+    def __init__(self, nombre, cedula, carrera):
+        super().__init__(nombre, cedula)
+        self.carrera = carrera
+        self.limite_libros = 3
+
+    @classmethod
+    def estudiante_sistemas(cls, nombre, cedula):
+        return cls(nombre, cedula, carrera="Sistemas")
+
+    def solicitar_libro(self, titulo):
+        if not titulo:
+            raise TituloInvalidoError(f"El libro con el titulo: {titulo}, no es valido")
+
+        if len(self.libros_prestados) < self.limite_libros:
+            self.libros_prestados.append(titulo)
+            return f"Prestamo del libro: {titulo} autorizado"
+        else:
+            return (
+                f"No pueden prestar mas libros, Limite alcanzado: {self.limite_libros}"
+            )
+
+
+class Profesor(Usuario):
+    def __init__(self, nombre, cedula):
+        super().__init__(nombre, cedula)
+        self.limite_libros = None
+
+    def solicitar_libro(self, titulo):
+        self.libros_prestados.append(titulo)
+        return f"Prestamo del libro: {titulo} autorizado"
