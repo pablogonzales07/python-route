@@ -1,14 +1,15 @@
-""" 
-dict = {}
+
+""" dict = {}
 for i in range(1, 5):
     dict[i] = i * 2
 
 print(dict)
 
-dict_2 = {i: i * 2 for i in range(1, 5)}
-print(dict_2) 
+dict= {i:i*2 for i in range(1,5)}
 
-"""
+
+dict_2 = {i: i * 2 for i in range(1, 5)}
+print(dict_2)  """
 
 '''
 import random
@@ -30,8 +31,9 @@ print(population_2)
 names = ['nico', 'zule', 'santi']
 ages = [12, 56,98]
 
-users = {
+""" users = {
     name: age
     for (name, age) in zip(names, ages)
 }
-print(users)
+print(users) """
+

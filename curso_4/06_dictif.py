@@ -7,6 +7,7 @@ population_2 = {
     for country in countries
 }
 print(population_2)
+
 result = {
     country: population 
     for (country, population) in population_2.items()
@@ -16,11 +17,13 @@ result = {
 print(result)
 
 
-text = 'Hola, soy Pablo'
+text = 'Hola soy Pablo'
+
 unique = {
-    c: text.count(c) 
+    c: text.count(c)
     for c in text
     if c.lower() in ('aeiou')
 }
 
 print(unique)
+

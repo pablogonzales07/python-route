@@ -1,7 +1,7 @@
+
 set_countries = {"col", "mex", "bol", "bol"}
 set_numbers = {1, 2, 2, 443, 23}
 set_types = {1, "hola", False, 12.12}
-
 
 print(set_countries)
 print(set_numbers)
